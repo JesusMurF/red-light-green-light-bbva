@@ -5,6 +5,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
     devOptions: {
@@ -32,7 +37,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
-        additionalData: `@import "./styles/variables.scss";`
+        additionalData: `@import "@/common.scss";`
       }
     }
   }
