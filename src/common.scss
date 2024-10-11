@@ -1,0 +1,22 @@
+// Private colors
+$_black: #000000;
+$_white: #ffffff;
+$_gray: #333333;
+$_dark-gray: #1f1f1f;
+
+// Public colors
+
+// Light theme
+$background-light: $_white;
+$text-light: $_black;
+
+// Dark theme
+$background-dark: $_gray;
+$text-dark: $_white;
+
+// Navbar
+$background-navbar: $_dark-gray;
+
+// Buttons
+$background-button: $_black;
+$text-button: $_white;
