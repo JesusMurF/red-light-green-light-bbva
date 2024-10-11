@@ -1,0 +1,14 @@
+.step-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: var(--background-button);
+  color: var(--text-button);
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}

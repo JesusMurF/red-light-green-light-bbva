@@ -1,6 +1,10 @@
 import { useState } from "react";
 import "./App.scss";
 import { Navbar } from "./components/Navbar/Navbar";
+import {
+  StepButtonLeft,
+  StepButtonRight,
+} from "./components/StepButton/StepButton";
 
 function App() {
   const [username, setUsername] = useState<string>("");
@@ -25,6 +29,10 @@ function App() {
         >
           Entrar
         </button>
+        <StepButtonLeft onClick={() => console.log("Step left")} />
+        <StepButtonRight
+          onClick={() => console.log("Step right")}
+        ></StepButtonRight>
       </main>
     </>
   );
