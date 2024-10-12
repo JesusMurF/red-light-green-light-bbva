@@ -1,0 +1,24 @@
+%clip {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.title {
+  font-size: 3rem;
+
+  &--red {
+    background: linear-gradient(to right, rgb(255, 197, 118), rgb(240, 23, 23));
+    -webkit-background-clip: text;
+    @extend %clip;
+  }
+
+  &--green {
+    background: linear-gradient(
+      to right,
+      rgb(182, 244, 146),
+      rgb(51, 139, 147)
+    );
+    -webkit-background-clip: text;
+    @extend %clip;
+  }
+}

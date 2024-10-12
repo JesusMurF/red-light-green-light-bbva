@@ -1,12 +1,8 @@
 import { useState } from "react";
-import "./App.scss";
-import { Navbar } from "./components/Navbar/Navbar";
-import {
-  StepButtonLeft,
-  StepButtonRight,
-} from "./components/StepButton/StepButton";
+import "./Home.scss";
+import { GreenLight, Navbar, RedLight } from "../../components";
 
-function App() {
+function Home() {
   const [username, setUsername] = useState<string>("");
 
   return (
@@ -14,8 +10,8 @@ function App() {
       <Navbar />
       <main className="main-content">
         <div className="main-content__title">
-          <h1 className="main-content__title--red">Red Light, &nbsp;</h1>
-          <h1 className="main-content__title--green">Green Light</h1>
+          <RedLight isActive />
+          <GreenLight isActive />
         </div>
         <input
           className="main-content__input"
@@ -29,13 +25,9 @@ function App() {
         >
           Entrar
         </button>
-        <StepButtonLeft onClick={() => console.log("Step left")} />
-        <StepButtonRight
-          onClick={() => console.log("Step right")}
-        ></StepButtonRight>
       </main>
     </>
   );
 }
 
-export default App;
+export default Home;
