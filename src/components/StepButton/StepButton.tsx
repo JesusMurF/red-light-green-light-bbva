@@ -4,25 +4,25 @@ import "./StepButton.scss";
 
 interface StepButtonProps {
   variant: "StepLeft" | "StepRight";
-  onClick: () => void;
+  setDirection: () => void;
 }
 
-const StepButton: React.FC<StepButtonProps> = ({ variant, onClick }) => {
+const StepButton: React.FC<StepButtonProps> = ({ variant, setDirection }) => {
   return (
-    <button className="step-button" onClick={onClick}>
+    <button className="step-button" onClick={setDirection}>
       {variant === "StepLeft" ? "Step left" : "Step right"}
     </button>
   );
 };
 
-export const StepButtonLeft: React.FC<Pick<StepButtonProps, "onClick">> = ({
-  onClick,
-}) => {
-  return <StepButton variant="StepLeft" onClick={onClick} />;
+export const StepButtonLeft: React.FC<
+  Pick<StepButtonProps, "setDirection">
+> = ({ setDirection }) => {
+  return <StepButton variant="StepLeft" setDirection={setDirection} />;
 };
 
-export const StepButtonRight: React.FC<Pick<StepButtonProps, "onClick">> = ({
-  onClick,
-}) => {
-  return <StepButton variant="StepRight" onClick={onClick} />;
+export const StepButtonRight: React.FC<
+  Pick<StepButtonProps, "setDirection">
+> = ({ setDirection }) => {
+  return <StepButton variant="StepRight" setDirection={setDirection} />;
 };
