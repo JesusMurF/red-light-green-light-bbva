@@ -6,39 +6,21 @@
 
   &__title {
     display: flex;
-    font-size: 1.5rem;
-  }
-
-  &__title--red {
-    font-weight: bold;
-    background: linear-gradient(to right, rgb(255, 197, 118), rgb(240, 23, 23));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  &__title--green {
-    font-weight: bold;
-    background: linear-gradient(
-      to right,
-      rgb(182, 244, 146),
-      rgb(51, 139, 147)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   &__input {
     margin: 1rem 0;
     padding: 0.5rem;
     border-radius: 0.25rem;
-    border: 2px solid #333333;
+    border: 2px solid transparent;
     width: 80%;
     font-size: 1rem;
     outline: none;
+    transition: border-color 0.3s ease;
   }
 
   &__input:focus {
-    border: 3px solid green;
+    border-color: yellow;
   }
 
   &__button {
