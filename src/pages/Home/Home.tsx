@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import "./Home.scss";
-import { GreenLight, RedLight } from "../../components";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { useNavigate } from "react-router-dom";
-import { Player } from "../../models/player";
+import { useEffect, useState } from 'react';
+import './Home.scss';
+import { GreenLight, RedLight } from '../../components';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useNavigate } from 'react-router-dom';
+import { Player } from '../../models/player';
 
 function Home() {
-  const [username, setUsername] = useState<string>("");
-  const [players, setPlayer] = useLocalStorage("players", [] as Player[]);
+  const [username, setUsername] = useState<string>('');
+  const [players, setPlayer] = useLocalStorage('players', [] as Player[]);
   const [currentPlayer, setCurrentPlayer] = useLocalStorage<Player>(
-    "currentPlayer",
+    'currentPlayer',
     {} as Player
   );
   const [isValid, setIsValidUsername] = useState<boolean>(true);
@@ -56,7 +56,7 @@ function Home() {
 
   useEffect(() => {
     if (currentPlayer.name) {
-      navigate("/game");
+      navigate('/game');
     }
   }, [currentPlayer, navigate]);
 
@@ -71,7 +71,7 @@ function Home() {
           className="main-content__input"
           onChange={(e) => handleUsernameChange(e)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && username) {
+            if (e.key === 'Enter' && username) {
               handleLogin(username);
             }
           }}

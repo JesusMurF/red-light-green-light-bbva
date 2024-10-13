@@ -1,4 +1,4 @@
-import "./TrafficLights.scss";
+import './TrafficLights.scss';
 
 interface GreenLightProps {
   isActive: boolean;
@@ -6,6 +6,6 @@ interface GreenLightProps {
 
 export const GreenLight = ({ isActive }: GreenLightProps) => {
   return (
-    <h1 className={`title ${isActive ? "title--green" : ""}`}>Green Light</h1>
+    <h1 className={`title ${isActive ? 'title--green' : ''}`}>Green Light</h1>
   );
 };
