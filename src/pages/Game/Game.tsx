@@ -11,16 +11,23 @@ import { Player } from "../../models/player";
 
 type TrafficLights = "red" | "green";
 
+enum TrafficLightsColors {
+  Red = "red",
+  Green = "green",
+}
+
 export default function Game() {
   const [currentPlayer, setCurrentPlayer] = useLocalStorage("currentPlayer", {
     name: "",
     score: 0,
     highScore: 0,
   });
-  const [, setPlayers] = useLocalStorage("players", [] as Player[]);
+  const [, setPlayers] = useLocalStorage<Player[]>("players", []);
   const [lastButtonClicked, setLastButtonClicked] = useState("");
   const [score, setScore] = useState(currentPlayer.score);
-  const [trafficLights, setTrafficLights] = useState<TrafficLights>("red");
+  const [trafficLights, setTrafficLights] = useState<TrafficLights>(
+    TrafficLightsColors.Red
+  );
   const navigate = useNavigate();
 
   const fixedRedDuration = 3000;
@@ -28,7 +35,10 @@ export default function Game() {
   const maxGreenDuration = 10000;
 
   const handleButtonClick = (direction: string) => {
-    const newScore = trafficLights === "red" ? 0 : calculateNewScore(direction);
+    const newScore =
+      trafficLights === TrafficLightsColors.Red
+        ? 0
+        : calculateNewScore(direction);
     updatePlayerState(direction, newScore);
   };
 
@@ -68,20 +78,22 @@ export default function Game() {
 
     const handleGreenLight = () => {
       const greenDuration = calculateGreenDuration();
-      console.log(greenDuration);
-      intervalId = setTimeout(() => setTrafficLights("red"), greenDuration);
+      intervalId = setTimeout(
+        () => setTrafficLights(TrafficLightsColors.Red),
+        greenDuration
+      );
     };
 
     const handleRedLight = () => {
       intervalId = setTimeout(() => {
-        setTrafficLights("green");
+        setTrafficLights(TrafficLightsColors.Green);
         handleGreenLight();
       }, fixedRedDuration);
     };
 
-    if (trafficLights === "red") {
+    if (trafficLights === TrafficLightsColors.Red) {
       handleRedLight();
-    } else if (trafficLights === "green") {
+    } else if (trafficLights === TrafficLightsColors.Green) {
       handleGreenLight();
     }
 
@@ -98,8 +110,8 @@ export default function Game() {
     <>
       <h1>{currentPlayer.name}</h1>
       <h2>Puntuación: {score}</h2>
-      <RedLight isActive={trafficLights === "red"} />
-      <GreenLight isActive={trafficLights === "green"} />
+      <RedLight isActive={trafficLights === TrafficLightsColors.Red} />
+      <GreenLight isActive={trafficLights === TrafficLightsColors.Green} />
       <StepButtonLeft setDirection={() => handleButtonClick("left")} />
       <StepButtonRight
         setDirection={() => handleButtonClick("right")}
