@@ -1,12 +1,19 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.scss';
-import { usePlayerState } from '../../hooks/usePlayerState';
+import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
 
-export const Navbar = () => {
-  const { currentPlayer } = usePlayerState();
+import './Navbar.scss';
+
+/**
+ * Navbar component
+ * @returns {JSX.Element}
+ */
+export const Navbar: React.FC = () => {
+  const { currentPlayer } = useCurrentPlayer();
+
   return (
     <header className="navbar">
-      <span className="navbar__title">BBVA Games</span>
+      <span className="navbar__title">Red light, Green light by Jesús Mur</span>
       {currentPlayer.name && (
         <Link
           to={'/'}

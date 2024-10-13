@@ -1,16 +1,10 @@
 import { useState } from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { useCurrentPlayer } from './useCurrentPlayer';
 import { Player } from '../models/player';
 
 export const usePlayerState = () => {
-  const [currentPlayer, setCurrentPlayer] = useLocalStorage<Player>(
-    'currentPlayer',
-    {
-      name: '',
-      score: 0,
-      highScore: 0,
-    }
-  );
+  const { currentPlayer, setCurrentPlayer } = useCurrentPlayer();
   const [, setPlayers] = useLocalStorage<Player[]>('players', []);
   const [lastButtonClicked, setLastButtonClicked] = useState<string>('');
   const [score, setScore] = useState<number>(currentPlayer.score);

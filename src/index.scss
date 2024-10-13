@@ -6,6 +6,7 @@
   --background-light: #{$background-light};
   --text-light: #{$text-light};
   --background-navbar: #{$background-navbar};
+  --background-button: #{$background-button};
 }
 
 body {
@@ -36,5 +37,23 @@ body {
   .header {
     background-color: var(--background-light);
     color: var(--text-light);
+  }
+
+  .step-button {
+    background-color: var(--background-button);
+    color: var(--text-dark);
+  }
+
+  .navbar__exit {
+    color: var(--text-light);
+  }
+
+  .title {
+    -webkit-text-stroke: 1px black;
+    color: white;
+  }
+
+  .username-field__input {
+    border-color: black;
   }
 }

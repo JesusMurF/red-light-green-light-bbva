@@ -30,7 +30,6 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      'react/exhaustive-deps': 'off',
       'prettier/prettier': 'error',
     },
   }

@@ -11,15 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { usePlayerState } from '../../hooks/usePlayerState';
 import { useTrafficLights } from '../../hooks/useTrafficLights';
 
-enum TrafficLightsColors {
-  Red = 'red',
-  Green = 'green',
-}
-
-enum Directions {
-  Left = 'left',
-  Right = 'right',
-}
+import './Game.scss';
+import { Directions, TrafficLightsColors } from '../../models/trafficLights';
 
 export default function Game() {
   const { currentPlayer, score, updatePlayerState, calculateNewScore } =
@@ -44,13 +37,31 @@ export default function Game() {
   return (
     <>
       <Navbar />
-      <PlayerInfo player={currentPlayer}></PlayerInfo>
-      <RedLight isActive={trafficLights === TrafficLightsColors.Red} />
-      <GreenLight isActive={trafficLights === TrafficLightsColors.Green} />
-      <StepButtonLeft setDirection={() => handleStepClicked(Directions.Left)} />
-      <StepButtonRight
-        setDirection={() => handleStepClicked(Directions.Right)}
-      ></StepButtonRight>
+      <main className="game-container">
+        <PlayerInfo player={currentPlayer} />
+        <section className="flex">
+          <RedLight
+            size="large"
+            isActive={trafficLights === TrafficLightsColors.Red}
+            animated
+            italic
+          />
+          <GreenLight
+            size="large"
+            isActive={trafficLights === TrafficLightsColors.Green}
+            animated
+            italic
+          />
+        </section>
+        <section className="flex">
+          <StepButtonLeft
+            setDirection={() => handleStepClicked(Directions.Left)}
+          />
+          <StepButtonRight
+            setDirection={() => handleStepClicked(Directions.Right)}
+          ></StepButtonRight>
+        </section>
+      </main>
     </>
   );
 }

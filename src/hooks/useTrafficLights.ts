@@ -1,15 +1,7 @@
 import { useState, useEffect } from 'react';
+import { TrafficLights, TrafficLightsColors } from '../models/trafficLights';
 
-type TrafficLights = 'red' | 'green';
-
-enum TrafficLightsColors {
-  Red = 'red',
-  Green = 'green',
-}
-
-const fixedRedDuration = 3000;
-const minGreenDuration = 2000;
-const maxGreenDuration = 10000;
+const redDuration = 3000;
 
 export const useTrafficLights = (score: number) => {
   const [trafficLights, setTrafficLights] = useState<TrafficLights>(
@@ -17,10 +9,7 @@ export const useTrafficLights = (score: number) => {
   );
 
   const calculateGreenDuration = () => {
-    const baseGreenDuration = maxGreenDuration - score * 100;
-    const clampedGreenDuration = Math.max(baseGreenDuration, minGreenDuration);
-    const randomVariation = Math.random() * 3000 - 1500;
-    return clampedGreenDuration + randomVariation;
+    return Math.max(10000 - score * 100, 2000) + Math.random() * 3000 - 1500;
   };
 
   useEffect(() => {
@@ -35,11 +24,13 @@ export const useTrafficLights = (score: number) => {
     const interval = setInterval(
       switchLights,
       trafficLights === TrafficLightsColors.Red
-        ? fixedRedDuration
+        ? redDuration
         : calculateGreenDuration()
     );
 
     return () => clearInterval(interval);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trafficLights]);
 
   return {

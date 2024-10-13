@@ -7,6 +7,11 @@ interface StepButtonProps {
   setDirection: () => void;
 }
 
+/**
+ * Step button base component
+ * @param {StepButtonProps} props - Component props
+ * @returns JSX.Element
+ */
 const StepButton: React.FC<StepButtonProps> = ({ variant, setDirection }) => {
   return (
     <button className="step-button" onClick={setDirection}>
