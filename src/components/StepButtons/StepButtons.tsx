@@ -1,12 +1,17 @@
 import React from 'react';
 
-import './StepButton.scss';
+import './StepButtons.scss';
 
 interface StepButtonProps {
   variant: 'StepLeft' | 'StepRight';
   setDirection: () => void;
 }
 
+/**
+ * Step button base component
+ * @param {StepButtonProps} props - Component props
+ * @returns JSX.Element
+ */
 const StepButton: React.FC<StepButtonProps> = ({ variant, setDirection }) => {
   return (
     <button className="step-button" onClick={setDirection}>

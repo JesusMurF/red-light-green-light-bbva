@@ -1,0 +1,17 @@
+.player-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__username {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  &__score {
+    display: flex;
+    gap: 2rem;
+  }
+}

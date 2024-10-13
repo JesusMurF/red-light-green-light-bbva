@@ -1,28 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { GreenLight, NameInput, Navbar, RedLight } from '../../components';
+import { useTextValidation } from '../../hooks/useTextValidation';
+import { usePlayerLogin } from '../../hooks/usePlayerLogin';
+
 import './Home.scss';
-import { GreenLight, RedLight } from '../../components';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useNavigate } from 'react-router-dom';
-import { Player } from '../../models/player';
 
-function Home() {
+export default function Home() {
   const [username, setUsername] = useState<string>('');
-  const [players, setPlayer] = useLocalStorage('players', [] as Player[]);
-  const [currentPlayer, setCurrentPlayer] = useLocalStorage<Player>(
-    'currentPlayer',
-    {} as Player
-  );
-  const [isValid, setIsValidUsername] = useState<boolean>(true);
-  const navigate = useNavigate();
-
-  /**
-   * Check if the username is valid
-   * @param {string} - Username
-   * @returns {boolean}
-   * */
-  const isValidUsername = (username: string): boolean => {
-    return /^[a-zA-Z0-9]+$/.test(username);
-  };
+  const { isValid, validateText } = useTextValidation();
+  const { handleLogin } = usePlayerLogin();
 
   /**
    * Check if the username is valid and set the username
@@ -33,54 +19,37 @@ function Home() {
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
     const value = e.target.value;
-    setIsValidUsername(isValidUsername(value));
-    if (isValidUsername(value)) {
+    validateText(value);
+    if (isValid) {
       setUsername(value);
     }
   };
 
-  /**
-   * If the player is not in the store, add it, if player exists return player
-   * @param {string} username - Player name
-   */
-  const handleLogin = (username: string): void => {
-    const player = players.find(
-      (player: Player) => player.name === username
-    ) || { name: username, score: 0, highScore: 0 };
-
-    if (!players.some((player: Player) => player.name === username)) {
-      setPlayer([...players, player]);
-    }
-    setCurrentPlayer(player);
-  };
-
-  useEffect(() => {
-    if (currentPlayer.name) {
-      navigate('/game');
-    }
-  }, [currentPlayer, navigate]);
-
   return (
     <>
-      <main className="main-content">
-        <div className="main-content__title">
+      <Navbar />
+      <main className="home-container">
+        <div className="home-container__title">
           <RedLight isActive />
           <GreenLight isActive />
         </div>
-        <input
-          className="main-content__input"
-          onChange={(e) => handleUsernameChange(e)}
+        <NameInput
           onKeyDown={(e) => {
             if (e.key === 'Enter' && username) {
               handleLogin(username);
             }
           }}
-          type="text"
+          onChange={handleUsernameChange}
+          isValid={isValid}
           placeholder="Tu nombre"
+          value={username}
         />
-        {!isValid && <span>El nombre de usuario no es válido</span>}
+        <p>
+          Escribe tu nombre y pulsa intro o haz clic en entrar para empezar el
+          juego
+        </p>
         <button
-          className="main-content__button"
+          className="home-container__button"
           onClick={() => username && handleLogin(username)}
           disabled={!isValid}
         >
@@ -90,5 +59,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;
