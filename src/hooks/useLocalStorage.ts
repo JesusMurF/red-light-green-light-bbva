@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 
 type SetValue<T> = (value: T | ((val: T) => T)) => void;
 
-export const useLocalStorage = <T,>(storageKey: string, initialValue?: T): [T, SetValue<T>] => {
+export const useLocalStorage = <T>(
+  storageKey: string,
+  initialValue?: T
+): [T, SetValue<T>] => {
   const [storageValue, setStorageValue] = useState<T>(() => {
     const storedValue = getFromLocalStorage(storageKey) as T | null;
     return storedValue !== null ? storedValue : (initialValue as T);

@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   GreenLight,
   RedLight,
   StepButtonLeft,
   StepButtonRight,
-} from "../../components";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { useNavigate } from "react-router-dom";
-import { Player } from "../../models/player";
+} from '../../components';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useNavigate } from 'react-router-dom';
+import { Player } from '../../models/player';
 
-type TrafficLights = "red" | "green";
+type TrafficLights = 'red' | 'green';
 
 enum TrafficLightsColors {
-  Red = "red",
-  Green = "green",
+  Red = 'red',
+  Green = 'green',
 }
 
 export default function Game() {
-  const [currentPlayer, setCurrentPlayer] = useLocalStorage("currentPlayer", {
-    name: "",
+  const [currentPlayer, setCurrentPlayer] = useLocalStorage('currentPlayer', {
+    name: '',
     score: 0,
     highScore: 0,
   });
-  const [, setPlayers] = useLocalStorage<Player[]>("players", []);
-  const [lastButtonClicked, setLastButtonClicked] = useState("");
+  const [, setPlayers] = useLocalStorage<Player[]>('players', []);
+  const [lastButtonClicked, setLastButtonClicked] = useState('');
   const [score, setScore] = useState(currentPlayer.score);
   const [trafficLights, setTrafficLights] = useState<TrafficLights>(
     TrafficLightsColors.Red
@@ -102,7 +102,7 @@ export default function Game() {
 
   useEffect(() => {
     if (!currentPlayer.name) {
-      navigate("/");
+      navigate('/');
     }
   }, [currentPlayer, navigate]);
 
@@ -112,9 +112,9 @@ export default function Game() {
       <h2>Puntuación: {score}</h2>
       <RedLight isActive={trafficLights === TrafficLightsColors.Red} />
       <GreenLight isActive={trafficLights === TrafficLightsColors.Green} />
-      <StepButtonLeft setDirection={() => handleButtonClick("left")} />
+      <StepButtonLeft setDirection={() => handleButtonClick('left')} />
       <StepButtonRight
-        setDirection={() => handleButtonClick("right")}
+        setDirection={() => handleButtonClick('right')}
       ></StepButtonRight>
     </>
   );
