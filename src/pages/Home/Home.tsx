@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Home.scss';
-import { GreenLight, RedLight } from '../../components';
+import { GreenLight, Navbar, RedLight } from '../../components';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useNavigate } from 'react-router-dom';
 import { Player } from '../../models/player';
@@ -62,6 +62,7 @@ function Home() {
 
   return (
     <>
+      <Navbar />
       <main className="main-content">
         <div className="main-content__title">
           <RedLight isActive />

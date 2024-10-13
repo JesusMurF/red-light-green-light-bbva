@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './StepButton.scss';
+import './StepButtons.scss';
 
 interface StepButtonProps {
   variant: 'StepLeft' | 'StepRight';
