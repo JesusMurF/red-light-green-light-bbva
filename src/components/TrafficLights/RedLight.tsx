@@ -5,9 +5,5 @@ interface RedLightProps {
 }
 
 export const RedLight = ({ isActive }: RedLightProps) => {
-  return (
-    <h1 className={`title ${isActive ? "title--red" : ""}`}>
-      Red Light, &nbsp;
-    </h1>
-  );
+  return <h1 className={`title ${isActive ? "title--red" : ""}`}>Red Light</h1>;
 };
