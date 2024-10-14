@@ -1,16 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
+  // Theme colors
   --background-dark: #{$background-dark};
   --text-dark: #{$text-dark};
   --background-light: #{$background-light};
   --text-light: #{$text-light};
   --background-navbar: #{$background-navbar};
+
+  // Colors
+  --text-black: #{$text-light};
+  --text-white: #{$text-dark};
   --background-button: #{$background-button};
+  --background-button-hover: #{$background-button-hover};
+  --text-button: #{$text-button};
+  --border: #{$border};
+
+  // Fonts
+  --inter: #{$inter};
 }
 
 body {
-  font-family: Inter, sans-serif;
+  font-family: var(--inter);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -41,19 +52,19 @@ body {
 
   .step-button {
     background-color: var(--background-button);
-    color: var(--text-dark);
+    color: var(--text-white);
   }
 
   .navbar__exit {
-    color: var(--text-light);
+    color: var(--text-black);
   }
 
   .title {
-    -webkit-text-stroke: 1px black;
+    -webkit-text-stroke: 1px var(--border);
     color: white;
   }
 
   .username-field__input {
-    border-color: black;
+    border-color: var(--border);
   }
 }

@@ -16,7 +16,7 @@
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     border: none;
-    background-color: var(--background-navbar);
+    background-color: var(--background-button);
     color: #ffffff;
     font-size: 1rem;
     cursor: pointer;
@@ -24,7 +24,7 @@
   }
 
   &__button:hover {
-    background-color: var(--background-navbar-hover);
+    background-color: var(--background-button-hover);
   }
 
   &__button:disabled {
