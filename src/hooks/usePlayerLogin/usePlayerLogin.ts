@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Player } from '../models/player';
-import { useLocalStorage } from './useLocalStorage';
+import { Player } from '../../models/player';
+import { useLocalStorage } from '../useLocalStorage/useLocalStorage';
 
 export const usePlayerLogin = () => {
   const [players, setPlayers] = useLocalStorage<Player[]>('players', []);

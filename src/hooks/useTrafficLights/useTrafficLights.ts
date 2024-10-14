@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TrafficLights, TrafficLightsColors } from '../models/trafficLights';
+import { TrafficLights, TrafficLightsColors } from '../../models/trafficLights';
 
 const redDuration = 3000;
 

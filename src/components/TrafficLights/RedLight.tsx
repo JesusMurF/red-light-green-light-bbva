@@ -20,6 +20,7 @@ export const RedLight = ({
         ${animated ? 'animated' : ''} 
         ${size === 'large' ? 'title--large' : ''} 
         ${italic ? 'title--italic' : ''}`}
+      data-testid="red-light"
     >
       Red Light
     </h1>

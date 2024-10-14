@@ -13,7 +13,7 @@ interface PlayerInfoProps {
 export const PlayerInfo: React.FC<PlayerInfoProps> = ({
   player: { name, score, highScore },
 }) => (
-  <section className="player-info-container">
+  <section className="player-info-container" data-testid="player-info">
     <h1 className="player-info-container__username">{name}</h1>
     <div className="player-info-container__score">
       <h2>Puntuación: {score}</h2>

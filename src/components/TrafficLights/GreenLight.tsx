@@ -20,6 +20,7 @@ export const GreenLight = ({
         ${animated ? 'animated' : ''}  
         ${size === 'large' ? 'title--large' : ''} 
         ${italic ? 'title--italic' : ''}`}
+      data-testid="green-light"
     >
       Green Light
     </h1>
