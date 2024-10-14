@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
+import { useCurrentPlayer } from '../../hooks';
 
 import './Navbar.scss';
 
