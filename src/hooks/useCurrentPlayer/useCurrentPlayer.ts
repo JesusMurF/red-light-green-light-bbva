@@ -1,5 +1,5 @@
-import { useLocalStorage } from './useLocalStorage';
-import { Player } from '../models/player';
+import { useLocalStorage } from '../useLocalStorage/useLocalStorage';
+import { Player } from '../../models/player';
 
 export const useCurrentPlayer = () => {
   const [currentPlayer, setCurrentPlayer] = useLocalStorage<Player>(

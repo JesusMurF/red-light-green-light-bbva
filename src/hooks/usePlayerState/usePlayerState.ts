@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useLocalStorage } from './useLocalStorage';
-import { useCurrentPlayer } from './useCurrentPlayer';
-import { Player } from '../models/player';
+import { useLocalStorage } from '../useLocalStorage/useLocalStorage';
+import { useCurrentPlayer } from '../useCurrentPlayer/useCurrentPlayer';
+import { Player } from '../../models/player';
 
 export const usePlayerState = () => {
   const { currentPlayer, setCurrentPlayer } = useCurrentPlayer();
@@ -12,7 +12,7 @@ export const usePlayerState = () => {
   /**
    * Updates the player state and persists it in local storage
    * @param {string} direction - The direction of the button clicked
-   * @param {number} newScore - The new score of the player
+   * @param {number} newScore - The accumulate score of the player
    */
   const updatePlayerState = (direction: string, newScore: number): void => {
     setLastButtonClicked(direction);
@@ -37,7 +37,7 @@ export const usePlayerState = () => {
   /**
    * Calculates the new score based on the direction of the button clicked
    * @param {string} direction - The direction of the button clicked
-   * @returns {number} The new score
+   * @returns {number} The new score added or subtracted
    */
   const calculateNewScore = (direction: string): number => {
     const isSameDirection = lastButtonClicked === direction;
