@@ -27,6 +27,7 @@ export const NameInput: React.FC<NameInputProps> = ({
       onChange={onChange}
       onKeyDown={onKeyDown}
       placeholder={placeholder}
+      data-testid="name-input"
     />
     {!isValid && value !== '' && (
       <p className="username-field__error">
