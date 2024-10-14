@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { GreenLight, NameInput, Navbar, RedLight } from '../../components';
-import { useTextValidation } from '../../hooks/useTextValidation';
-import { usePlayerLogin } from '../../hooks/usePlayerLogin';
+import { usePlayerLogin, useTextValidation } from '../../hooks';
 
 import './Home.scss';
 
@@ -52,6 +51,7 @@ export default function Home() {
           className="home-container__button"
           onClick={() => username && handleLogin(username)}
           disabled={!isValid}
+          data-testid="login-button"
         >
           Entrar
         </button>

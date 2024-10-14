@@ -8,11 +8,10 @@ import {
   StepButtonRight,
 } from '../../components';
 import { useNavigate } from 'react-router-dom';
-import { usePlayerState } from '../../hooks/usePlayerState';
-import { useTrafficLights } from '../../hooks/useTrafficLights';
+import { usePlayerState, useTrafficLights } from '../../hooks';
+import { Directions, TrafficLightsColors } from '../../models/trafficLights';
 
 import './Game.scss';
-import { Directions, TrafficLightsColors } from '../../models/trafficLights';
 
 export default function Game() {
   const { currentPlayer, score, updatePlayerState, calculateNewScore } =
@@ -37,7 +36,7 @@ export default function Game() {
   return (
     <>
       <Navbar />
-      <main className="game-container">
+      <main className="game-container" data-testid="game">
         <PlayerInfo player={currentPlayer} />
         <section className="flex">
           <RedLight
@@ -56,9 +55,11 @@ export default function Game() {
         <section className="flex">
           <StepButtonLeft
             setDirection={() => handleStepClicked(Directions.Left)}
+            testId="step-button-left"
           />
           <StepButtonRight
             setDirection={() => handleStepClicked(Directions.Right)}
+            testId="step-button-right"
           ></StepButtonRight>
         </section>
       </main>
