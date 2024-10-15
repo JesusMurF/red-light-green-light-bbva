@@ -19,11 +19,20 @@ export default function Game() {
   const { trafficLights } = useTrafficLights(score);
   const navigate = useNavigate();
 
+  const clickedOnRedLight = () => trafficLights === TrafficLightsColors.Red;
+
+  const vibrate = (duration: number) => {
+    if (navigator.vibrate) {
+      navigator.vibrate(duration);
+    }
+  };
+
   const handleStepClicked = (direction: string) => {
-    const newScore =
-      trafficLights === TrafficLightsColors.Red
-        ? 0
-        : calculateNewScore(direction);
+    const isRedLight = clickedOnRedLight();
+    if (isRedLight) {
+      vibrate(500);
+    }
+    const newScore = isRedLight ? 0 : calculateNewScore(direction);
     updatePlayerState(direction, newScore);
   };
 
