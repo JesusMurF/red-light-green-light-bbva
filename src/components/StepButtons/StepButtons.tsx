@@ -25,6 +25,11 @@ const StepButton: React.FC<StepButtonProps> = ({
   );
 };
 
+/**
+ * Left step button
+ * @param {Omit<StepButtonProps, 'variant'>} props - Indicates the direction of the step
+ * @returns JSX.Element
+ */
 export const StepButtonLeft: React.FC<Omit<StepButtonProps, 'variant'>> = ({
   setDirection,
   testId,
@@ -38,6 +43,11 @@ export const StepButtonLeft: React.FC<Omit<StepButtonProps, 'variant'>> = ({
   );
 };
 
+/**
+ * Right step button
+ * @param {Omit<StepButtonProps, 'variant'>} props - Indicates the direction of the step
+ * @returns JSX.Element
+ */
 export const StepButtonRight: React.FC<Omit<StepButtonProps, 'variant'>> = ({
   setDirection,
   testId,

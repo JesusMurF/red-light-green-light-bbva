@@ -44,9 +44,9 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'Mi PWA React App',
-        short_name: 'PWA App',
-        description: 'Una Progressive Web App construida con React y Vite',
+        name: 'Red Light, Green Light',
+        short_name: 'Lights Game',
+        description: 'Un juego desarrollado por Jesus Mur',
         theme_color: '#ffffff',
         icons: [
           {

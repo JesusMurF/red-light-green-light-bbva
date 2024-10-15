@@ -19,15 +19,23 @@ export default function Game() {
   const { trafficLights } = useTrafficLights(score);
   const navigate = useNavigate();
 
+  // Check if current light is red
   const clickedOnRedLight = () => trafficLights === TrafficLightsColors.Red;
 
+  // Vibrate the device
   const vibrate = (duration: number) => {
     if (navigator.vibrate) {
       navigator.vibrate(duration);
     }
   };
 
-  const handleStepClicked = (direction: string) => {
+  /**
+   * If the player clicked on the red light, vibrate the device and set the score to 0
+   * If not, calculate the new score based on the direction of the button clicked
+   * and update the player state
+   * @param {string} direction
+   */
+  const handleStepClicked = (direction: string): void => {
     const isRedLight = clickedOnRedLight();
     if (isRedLight) {
       vibrate(500);
@@ -36,6 +44,7 @@ export default function Game() {
     updatePlayerState(direction, newScore);
   };
 
+  // Redirect to the home page if the player is not logged in
   useEffect(() => {
     if (!currentPlayer.name) {
       navigate('/');

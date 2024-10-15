@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Player } from '../../models/player';
 import { useLocalStorage } from '../useLocalStorage/useLocalStorage';
 
+/**
+ * Login a player in the game
+ * @returns {Function} - Handle login
+ */
 export const usePlayerLogin = () => {
   const [players, setPlayers] = useLocalStorage<Player[]>('players', []);
   const [currentPlayer, setCurrentPlayer] = useLocalStorage<Player>(
@@ -15,6 +19,10 @@ export const usePlayerLogin = () => {
   );
   const navigate = useNavigate();
 
+  /**
+   * Find the player in the list of players, update the list and set it as the current player
+   * @param {string} username - Player username
+   */
   const handleLogin = (username: string): void => {
     const player = players.find(
       (player: Player) => player.name === username
@@ -27,6 +35,9 @@ export const usePlayerLogin = () => {
     setCurrentPlayer(player);
   };
 
+  /**
+   * Redirect to the game page if the player is logged in
+   */
   useEffect(() => {
     if (currentPlayer.name) {
       navigate('/game');

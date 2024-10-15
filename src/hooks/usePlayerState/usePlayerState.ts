@@ -3,6 +3,10 @@ import { useLocalStorage } from '../useLocalStorage/useLocalStorage';
 import { useCurrentPlayer } from '../useCurrentPlayer/useCurrentPlayer';
 import { Player } from '../../models/player';
 
+/**
+ * Update the player scores and persist them in local storage
+ * @returns {Object} - Current player, score, updatePlayerState, calculateNewScore
+ */
 export const usePlayerState = () => {
   const { currentPlayer, setCurrentPlayer } = useCurrentPlayer();
   const [, setPlayers] = useLocalStorage<Player[]>('players', []);
