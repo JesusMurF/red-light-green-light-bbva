@@ -43,7 +43,7 @@ export default function Home() {
           placeholder="Tu nombre"
           value={username}
         />
-        <p>
+        <p className="home-container__info">
           Escribe tu nombre y pulsa intro o haz clic en entrar para empezar el
           juego
         </p>
