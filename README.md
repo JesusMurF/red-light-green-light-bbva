@@ -18,6 +18,8 @@ Para la realización de este proyecto se utilizaron las siguientes tecnologías:
 - HTML
 - CSS (SASS) Siguiendo la metodología BEM.
 - JavaScript con TypeScript
+- React
+- React Router
 - React Hooks (Se han utilizado los hooks como servicios para la gestión de la lógica de negocio y seguir un enfoque de programación funcional mas "React")
 - Vite (Bundler)
 - Jest y Testing Library (Unit Testing)
