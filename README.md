@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# Red Light, Green Light una prueba técnica para BBVA Tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introducción
 
-Currently, two official plugins are available:
+Introduce un nombre de usuario válido (solo carácteres alfanumericos sin espacios) y presiona el botón de "Start" para comenzar a jugar. El juego consiste en avanzar mediante los botones de paso a la derecha (Step Right) y paso a la izquierda (Step Left), pero solo puede hacerlo cuando el semáforo está en verde. Si el semáforo se pone en rojo, el jugador debe detenerse. Si el jugador se mueve cuando el semáforo está en rojo, perderá todos sus puntos, del mismo modo si el semaforo esta en verde y da dos pasos o más con el mismo pie (mismo botón) se le descuenta un punto por cada error cometido.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Carácteristicas
 
-## Expanding the ESLint configuration
+- El juego cuenta con modo Light y Dark que responde a la configuración de tu sistema operativo.
+- El juego cuenta con un sistema de semaforo basado en las letras Red Light, Green Light, cuando estas letras se "encienden" el jugador puede moverse o detenerse, además cuentan con una bonita animación de espiral.
+- El jugador también experimentará una vibración del dispositivo cuando se mueva cuando el semáforo está en rojo.
+- El juego es una WPA (Aplicación Web Progresiva) por lo que puedes instalarlo en tu dispositivo y jugarlo sin conexión a internet.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tecnologías utilizadas
 
-- Configure the top-level `parserOptions` property like this:
+Para la realización de este proyecto se utilizaron las siguientes tecnologías:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+- HTML
+- CSS (SASS) Siguiendo la metodología BEM.
+- JavaScript con TypeScript
+- React Hooks (Se han utilizado los hooks como servicios para la gestión de la lógica de negocio y seguir un enfoque de programación funcional mas "React")
+- Vite (Bundler)
+- Jest y Testing Library (Unit Testing)
+- ESLint y Prettier (Linting y formateo de código)
+
+## Instalación
+
+Para instalar el proyecto, se debe clonar el repositorio y luego instalar las dependencias con el siguiente comando:
+
+```bash
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Ejecución en local
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+Para ejecutar el proyecto en local, se debe ejecutar el siguiente comando:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
+```bash
+npm run dev
 ```
+
+## Ejecución de pruebas
+
+Para ejecutar las pruebas unitarias, se debe ejecutar el siguiente comando:
+
+```bash
+npm run test
+```
+
+## Demo
+
+Para ver una demo del proyecto, se puede acceder al siguiente enlace: [Demo](https://red-light-green-light-jesus-mur.vercel.app/)
