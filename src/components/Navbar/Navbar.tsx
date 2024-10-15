@@ -12,7 +12,7 @@ export const Navbar: React.FC = () => {
   const { currentPlayer } = useCurrentPlayer();
 
   return (
-    <header className="navbar" data-testid="navbar">
+    <nav className="navbar" data-testid="navbar">
       <span className="navbar__title">Red light, Green light by Jesús Mur</span>
       {currentPlayer.name && (
         <Link
@@ -23,6 +23,6 @@ export const Navbar: React.FC = () => {
           Salir
         </Link>
       )}
-    </header>
+    </nav>
   );
 };
